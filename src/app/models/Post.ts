@@ -6,8 +6,8 @@ export interface Post {
   caption: string;
   location: string;
   image?: File;
-  like?: number;
-  userLiked?: string[];
-  comment?: Comment[];
+  likes?: number;
+  usersLiked?: string[];
+  comments?: Comment [];
   username?: string;
 }

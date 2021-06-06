@@ -1,7 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 const IMAGE_API = 'http://localhost:8080/api/image/';
 
@@ -10,14 +9,13 @@ const IMAGE_API = 'http://localhost:8080/api/image/';
 })
 export class ImageUploadService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   uploadImageToUser(file: File): Observable<any> {
-    const uploadDate = new FormData();
-    uploadDate.append('file', file);
+    const uploadData = new FormData();
+    uploadData.append('file', file);
 
-    return this.http.post(IMAGE_API + 'upload', uploadDate);
+    return this.http.post(IMAGE_API + 'upload', uploadData);
   }
 
   uploadImageToPost(file: File, postId: number): Observable<any> {
@@ -31,7 +29,10 @@ export class ImageUploadService {
     return this.http.get(IMAGE_API + 'profileImage');
   }
 
-  getImageToPost(postId: number): Observable<any> {
+  getImageToPost(postId: number): any {
     return this.http.get(IMAGE_API + postId + '/image');
   }
+
+
+
 }
